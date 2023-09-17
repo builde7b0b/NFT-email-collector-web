@@ -13,3 +13,6 @@ export const collectEmail = (emailData) => {
 };
 
 
+export const createCollection = (data) => axios.post('/collections', data);
+export const updateCollection = (id, data) => axios.put(`/collections/${id}`, data);
+export const deleteCollection = (id) => axios.delete(`/collections/${id}`);
