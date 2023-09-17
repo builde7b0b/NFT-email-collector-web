@@ -7,5 +7,9 @@ const api = axios.create({
 });
 
 export const registerUser = (userData) => api.post('/register', userData);
-export const loginUser = (userData) => api.post('./login', userData);
+export const loginUser = (userData) => api.post('/login', userData);
+export const collectEmail = (emailData) => {
+    return axios.post('/collect_email', emailData);
+};
+
 
