@@ -40,14 +40,16 @@ function RegisterForm() {
     }, [isRegistered, navigate]);
 
     return (
-        <div className="register-form">
-            <h1>Register</h1>
-            <form onSubmit={registerUserF}>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <button  type="submit">Register</button>
-            </form>
-        </div>
+        <div className="register-form-container">
+      <div className="register-form">
+        <h1>Sign Up</h1>
+        <form onSubmit={registerUserF}>
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+    </div>
     );
 }
 
