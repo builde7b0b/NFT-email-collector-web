@@ -1,12 +1,19 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './LoginForm.css';
 import { loginUser } from '../services/api';
 import { useNavigate } from 'react-router-dom'
-
+import { useAuth } from './Context';
 
 function LoginForm() {
-const [isLoggedIn, setIsLoggedIn] = useState(false);
+// const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const usernameInputRef = useRef(null); // Create a ref for the username input
+  const { login } = useAuth();
+
+  useEffect(() => {
+    // Focus on the username input when the component mounts
+    usernameInputRef.current.focus();
+  }, []);
 
 const loginUserF = async (e) => {
     e.preventDefault();
@@ -17,26 +24,28 @@ const loginUserF = async (e) => {
     try { 
       const response = await loginUser(userData);
       if(response.status === 200) {
-        setIsLoggedIn(true);
+        login();
+        alert('You have successfully logged in, redirecting to Dashboard');
+        navigate('/dashboard');
       }
     } catch (error) {
       console.error("Login Failed", error);
     }
   }
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      alert('You have successfully logged in, redirecting to Dashboard');
-      navigate('/dashboard');
-    }
-  }, [isLoggedIn, navigate]);
+  // useEffect(() => {
+  //   if (setIsLoggedIn) {
+      
+      
+  //   }
+  // }, [setIsLoggedIn, navigate]);
 
     return (
         <div className="login-form-container">
         <div className="login-form">
           <h1>Login</h1>
           <form onSubmit={loginUserF}>
-            <input type="email" placeholder="Email" />
+            <input type="email" placeholder="Email" ref={usernameInputRef} />
             <input type="password" placeholder="Password" />
             <button type="submit">Login</button>
           </form>

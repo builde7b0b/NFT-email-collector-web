@@ -9,10 +9,11 @@ const api = axios.create({
 export const registerUser = (userData) => api.post('/register', userData);
 export const loginUser = (userData) => api.post('/login', userData);
 export const collectEmail = (emailData) => {
-    return axios.post('/collect_email', emailData);
+    return api.post('/collect_email', emailData);
 };
 
 
-export const createCollection = (data) => axios.post('/collections', data);
-export const updateCollection = (id, data) => axios.put(`/collections/${id}`, data);
-export const deleteCollection = (id) => axios.delete(`/collections/${id}`);
+export const createCollection = (data) => api.post('/collection', data);
+export const updateCollection = (id, data) => api.put(`/collections/${id}`, data);
+export const deleteCollection = (id) => api.delete(`/collections/${id}`);
+export const getAllCollections = () => api.get(`/collections`);

@@ -10,10 +10,11 @@ const Toolbar = () => {
         <h1>NFT Collector</h1>
       </div>
       <div className="toolbar-navigation">
-        <Link to="/features">Features</Link>
-        <Link to="/pricing">Pricing</Link>
+      <Link to="/register">Register</Link>
         <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
+        {/* <Link to="/features">Features</Link> */}
+        <Link to="/pricing">Pricing</Link>
+        <Link to="/dashboard">Dashboard</Link>
       </div>
     </div>
   );
