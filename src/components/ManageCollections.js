@@ -7,6 +7,9 @@ import CreateCollectionModal from './CreateCollectionModal';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-alpine.css';
+import { toast } from 'react-toastify';
+
+
 
 const ActionsCellRenderer = (params) => {
   const handleUpdate = () => {
@@ -28,13 +31,14 @@ const ActionsCellRenderer = (params) => {
 };
 
 
-function ManageCollections( {onClose}) {
+function ManageCollections( {onClose, userEmail}) {
     const [name, setName] = useState(' ');
     const [description, setDescription] = useState(' ');
     const [collections, setCollections] = useState([]);
     const [showCreateModal, setShowCreateModal] = useState(false);
     const [gridApi, setGridApi] = useState(null);
   const [gridColumnApi, setGridColumnApi] = useState(null);
+  const [uerEmail, setUserEmail] = useState('')
 
     const columnDefs = [
       {headerCheckBoxSelection: true, checkboxSelection: true, width: 50},
@@ -58,20 +62,6 @@ function ManageCollections( {onClose}) {
     }
 
     
-
-
-
-
-    const handleCreate = async () => {
-        const data = {
-            name, 
-            description,
-            owner_id: 'someOwnerId' // replace with actual id
-        };
-        const response = await createCollection(data);
-        console.log('Collection created:', response.data);
-    };
-
     const fetchCollections = async () => {
       try {
         const response = await getAllCollections(); // Assume getAllCollections is your API call function
@@ -95,6 +85,9 @@ function ManageCollections( {onClose}) {
         console.log("ID TO DELETE: " + id)
         await deleteCollection(id); // Assume deleteCollection is your API call function
         fetchCollections(); // Refresh the collections list
+        toast.success(' Delete succeeded', {
+          autoClose: 3000, // Close the notification after 3 seconds (adjust as needed)
+        });
       } catch (error) {
         console.error("Failed to delete collection:", error);
       }
@@ -144,11 +137,11 @@ function ManageCollections( {onClose}) {
         </div>
         <div className="modal-footer">
           <button className="modal-button" onClick={onClose}>Close</button>
-          <button className="modal-button" onClick={handleUpdate}>Update Selected</button>
+          <button disabled className="modal-button" onClick={handleUpdate}>Update Selected</button>
       <button className="modal-button" onClick={handleDelete}>Delete Selected</button>
         </div>
       </div>
-      {showCreateModal && <CreateCollectionModal onClose={() => setShowCreateModal(false)} onCollectionCreated={handleCollectionCreated} />}
+      {showCreateModal && <CreateCollectionModal onClose={() => setShowCreateModal(false)} onCollectionCreated={handleCollectionCreated} userEmail={userEmail} />}
 
     </div>
   );

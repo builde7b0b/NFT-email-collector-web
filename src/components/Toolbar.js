@@ -13,8 +13,8 @@ const Toolbar = () => {
       <Link to="/register">Register</Link>
         <Link to="/login">Login</Link>
         {/* <Link to="/features">Features</Link> */}
-        <Link to="/pricing">Pricing</Link>
-        <Link to="/dashboard">Dashboard</Link>
+        <Link  hidden to="/pricing">Pricing</Link>
+        <Link hidden to="/dashboard">Dashboard</Link>
       </div>
     </div>
   );

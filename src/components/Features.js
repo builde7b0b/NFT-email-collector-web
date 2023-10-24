@@ -21,8 +21,8 @@ const Features = () => {
       }
     return (
         <div className="features">
-            <h1>Features</h1>
-            <p>Our platform is designed for NFT collection owners to collect, manage, and engate with their community through email list.</p>
+            <h1>Manage Your NFT Project & Users Information Securely and Easily</h1>
+            <p>Our platform is designed for NFT collection owners to collect, manage, and engage with their community through email list.</p>
             <ul>
                 <li><i className="feature-icon fas fa-envelope"></i> Collect verified emails from NFT holders</li>
                 <li><i className="feature-icon fas fa-paper-plane"></i> Send targeted email campaigns</li>

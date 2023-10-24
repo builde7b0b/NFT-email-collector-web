@@ -4,11 +4,16 @@ import { loginUser } from '../services/api';
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from './Context';
 
+
 function LoginForm() {
 // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
   const usernameInputRef = useRef(null); // Create a ref for the username input
-  const { login } = useAuth();
+  const { isLoggedIn, login, logout, setIsLoggedIn, userEmail, setUserEmail } = useAuth();
+
+  // useEffect(() => {
+  //   console.log('User Email:', userEmail);
+  // }, [userEmail]);
 
   useEffect(() => {
     // Focus on the username input when the component mounts
@@ -20,9 +25,16 @@ const loginUserF = async (e) => {
     const email = e.target.elements[0].value;
     const password = e.target.elements[1].value;
     const userData = {email, password};
+    setUserEmail(email);
 
     try { 
       const response = await loginUser(userData);
+      if(response.data.token) {
+        const uniqueToken = response.data.token;
+        const userEmail = response.data.email;
+
+        setUserEmail(userEmail);
+      }
       if(response.status === 200) {
         login();
         alert('You have successfully logged in, redirecting to Dashboard');

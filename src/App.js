@@ -18,9 +18,14 @@ import { AuthProvider } from './components/Context';
 function App() {
   return (
     <AuthProvider>
+
     <Router>
       <Toolbar />
+      {/* <video className="intro-video" autoPlay muted loop>
+  <source src="https://player.vimeo.com/external/411458540.sd.mp4?s=9bc22aa74d4d7ee9b7ce93473a8b42f597b0daf5&profile_id=164&oauth2_token_id=57447761" type="video/mp4" />
+</video> */}
       <Features />
+      
       {/* <PaymentForm /> */}
     <div className="App">
       <main>

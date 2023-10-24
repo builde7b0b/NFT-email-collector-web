@@ -79,3 +79,10 @@
     transform: rotate(360deg);
   }
 }
+
+
+.intro-video {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+}

@@ -1,12 +1,28 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './ViewEmails.css';
 import { collectEmail } from '../services/api';
+import { getAllEmails } from '../services/api';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 
 function ViewEmails({onClose}) {
 
     const [email,  setEmail] = useState(' ');
     const [emailList, setEmailList] = useState([]);
+
+    useEffect(() => {
+      async function fetchEmails() {
+        try {
+          const response = await getAllEmails();
+          setEmailList(response.data);
+        } catch (error) {
+          console.error('Failed to fetch emails:', error)
+        }
+      }
+      fetchEmails();
+    }, []);
 
     const handleCollectEmail = async () => {
         const userId = 'some_user_id';
@@ -44,11 +60,22 @@ function ViewEmails({onClose}) {
     <div className="view-emails">
       <h1>View Collected Emails</h1>
       {/* Add your email viewing UI here */}
-      <ul>
-        {emailList.map((email, index) => (
-            <li key={index}>{email}</li>
-        ))}
-      </ul>
+      {/* Using ag-grid to display emails */}
+      <div className="ag-theme-alpine" style={{ height: 400, width: 600 }}>
+            <AgGridReact
+              columnDefs={[
+                { headerName: "Email", field: "email", sortable: true, filter: true },
+                // { headerName: "User ID", field: "user_id", sortable: true, filter: true }
+              ]}
+              rowData={emailList}
+            />
+          </div>
+      {/* <ul>
+    {emailList.map((emailObj, index) => (
+        <li key={index}>{emailObj.email}</li>
+    ))}
+</ul> */}
+
     </div>
     </div>
 
