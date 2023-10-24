@@ -7,9 +7,14 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import Modal from 'react-modal';
 
-
+// testing - LOCAL
 const stripePromise = loadStripe('pk_test_51LXunxDehgflY7M5CwBLdS3Gx93qehw73hHxtJFpSBxp7T4KwewVgl7cOHsZ9BiyhMitAYl6fMvjmdaOvuNABea3005XjBvgId');
 Modal.setAppElement('#root'); // Replace '#root' with the appropriate element where your React app is mounted.
+
+
+// production code 
+// const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
+// Modal.setAppElement('#root');
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
