@@ -6,15 +6,21 @@ import axios from 'axios';
 
 const PaymentForm = ({onPaymentSuccess}) => {
   const [isLoading, setIsLoading] = useState(true);
-    const [paymentFeedback, setPaymentFeedback] = useState('');
+  const [paymentFeedback, setPaymentFeedback] = useState('');
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
 
-  const api = axios.create({
-    baseURL: 'http://127.0.0.1:5000', //replacw with Flask API URL 
+  // const api = axios.create({
+  //   baseURL: 'http://127.0.0.1:5000', //replacw with Flask API URL 
 
-});
+  // });
+
+  //PROD CODE
+  const api = axios.create({
+    baseURL: 'https://nft-email-collector-api-806363e3ce7d.herokuapp.com/', //replacw with Flask API URL 
+
+  });
 
 useEffect(() => {
   console.log(isLoading)

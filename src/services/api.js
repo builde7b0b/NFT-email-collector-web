@@ -1,8 +1,13 @@
 import axios from "axios";
 
 
+// const api = axios.create({
+//     baseURL: 'http://127.0.0.1:5000', //replacw with Flask API URL 
+
+// });
+
 const api = axios.create({
-    baseURL: 'http://127.0.0.1:5000', //replacw with Flask API URL 
+    baseURL: 'https://nft-email-collector-api-806363e3ce7d.herokuapp.com/', //replacw with Flask API URL 
 
 });
 
@@ -25,7 +30,10 @@ export const loginUser = async (userData) => {
     }
 };
 
-const token = localStorage.getItem('jwt');  // Assuming you store the JWT token in localStorage
+
+
+export const collectEmail = (emailData) => {
+    const token = localStorage.getItem('jwt');  // Assuming you store the JWT token in localStorage
 
 if (!token) {
     throw new Error('No token found');
@@ -34,12 +42,19 @@ if (!token) {
 const headers = {
     Authorization: `Bearer ${token}`
 };
-
-export const collectEmail = (emailData) => {
     return api.post('/collect_email', emailData, { headers });
 };
 
 export const getAllEmails = () => {
+    const token = localStorage.getItem('jwt');  // Assuming you store the JWT token in localStorage
+
+if (!token) {
+    throw new Error('No token found');
+}
+
+const headers = {
+    Authorization: `Bearer ${token}`
+};
     return api.get('/get_all_emails', { headers });
 };
 
