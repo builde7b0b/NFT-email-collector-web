@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import ManageCollections from './ManageCollections';
 import ViewEmails from './ViewEmails';
 import {useAuth} from './Context';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 function Dashboard(){
   const [showViewEmails, setShowViewEmails] = useState(false);
@@ -47,8 +49,12 @@ function Dashboard(){
           <h1>Welcome to Your Dashboard</h1>
           <p>Here you can manage your NFT collections and email lists.</p>
           <div className="dashboard-actions">
-            <button ref={dashRef} onClick={goToManageCollections} className="dashboard-button manage">Manage Collections</button>
-            <button onClick={goToViewEmails} className="dashboard-button emails">View Emails</button>
+            <button ref={dashRef} onClick={goToManageCollections} className="dashboard-button manage">Manage NFT Collections</button>
+            <button onClick={goToViewEmails} className="dashboard-button emails ">View Email List</button>
+            <button disabled onClick={goToViewEmails} className="dashboard-button "><FontAwesomeIcon icon={faStar} />Export Email List</button>
+            <button disabled onClick={goToViewEmails} className="dashboard-button "><FontAwesomeIcon icon={faStar} />Create Email Campaign</button>
+            <button disabled onClick={goToViewEmails} className="dashboard-button"><FontAwesomeIcon icon={faStar} />Priority Support</button>
+            <button disabled onClick={goToViewEmails} className="dashboard-button"><FontAwesomeIcon icon={faStar} />Manage NFTs</button>
           </div>
         </div>
 

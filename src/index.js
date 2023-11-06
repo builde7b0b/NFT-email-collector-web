@@ -6,9 +6,10 @@ import reportWebVitals from './reportWebVitals';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import Modal from 'react-modal';
+import './fonts.css'
 
 // testing - LOCAL
-const stripePromise = loadStripe('pk_test_51LXunxDehgflY7M5CwBLdS3Gx93qehw73hHxtJFpSBxp7T4KwewVgl7cOHsZ9BiyhMitAYl6fMvjmdaOvuNABea3005XjBvgId');
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY_PROD);
 Modal.setAppElement('#root'); // Replace '#root' with the appropriate element where your React app is mounted.
 
 
@@ -16,6 +17,11 @@ Modal.setAppElement('#root'); // Replace '#root' with the appropriate element wh
 // const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 // Modal.setAppElement('#root');
 
+if (process.env.NODE_ENV === 'development') {
+  console.log('Running in development mode');
+} else if (process.env.NODE_ENV === 'production') {
+  console.log('Running in production mode');
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

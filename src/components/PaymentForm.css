@@ -51,7 +51,7 @@ label {
 }
 
 button {
-  background-color: #000000;
+  background-color: red;
   color: #ffffff;
   padding: 10px 15px;
   border: none;
@@ -62,7 +62,7 @@ button {
 }
 
 button:hover {
-  background-color: #333333;
+  background-color: darkgoldenrod;
 }
 
 button:disabled {
@@ -91,4 +91,55 @@ button:disabled {
   margin-top: 20px;
   font-size: 14px;
   color: #333;
+}
+
+
+.payment-form {
+  max-width: 500px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.card-element {
+  background: #f7f7f7;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.submit-button:disabled {
+  background-color: #ccc;
+  cursor: default;
 }

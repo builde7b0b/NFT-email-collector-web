@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #008080;
+    background-color: #007bff;
   }
   
   .dashboard {
@@ -32,6 +32,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 40px;
+    overflow:auto;
   }
   
   .dashboard-button {
@@ -41,10 +42,12 @@
     cursor: pointer;
     border: none;
     color: #fff;
+    margin: 5px;
+    background-color: red;
   }
   
   .dashboard-button.manage {
-    background-color: #007bff;
+    background-color: #28a745;
   }
   
   .dashboard-button.emails {

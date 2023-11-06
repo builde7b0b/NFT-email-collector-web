@@ -37,13 +37,13 @@ function ManageCollections( {onClose, userEmail}) {
     const [collections, setCollections] = useState([]);
     const [showCreateModal, setShowCreateModal] = useState(false);
     const [gridApi, setGridApi] = useState(null);
-  const [gridColumnApi, setGridColumnApi] = useState(null);
-  const [uerEmail, setUserEmail] = useState('')
+    const [gridColumnApi, setGridColumnApi] = useState(null);
+    const [uerEmail, setUserEmail] = useState('')
 
     const columnDefs = [
       {headerCheckBoxSelection: true, checkboxSelection: true, width: 50},
       { headerName: "Name", field: "name" },
-      { headerName: "ID", field: "_id" },
+      // { headerName: "ID", field: "_id" },
       {
         headerName: "Actions",
         cellRendererFramework: (params) => (
@@ -115,6 +115,9 @@ function ManageCollections( {onClose, userEmail}) {
         
         {/* Your collection management logic here */}
         <button className="modal-button" onClick={() => setShowCreateModal(true)}>Create New Collection</button>
+        <button className="modal-button" onClick={onClose}>Close</button>
+          <button disabled className="modal-button" onClick={handleUpdate}>Update Selected</button>
+      <button className="modal-button" onClick={handleDelete}>Delete Selected</button>
 
         {/* <div className="collections-list">
         {collections.map((collection) => (
@@ -136,9 +139,7 @@ function ManageCollections( {onClose, userEmail}) {
           />
         </div>
         <div className="modal-footer">
-          <button className="modal-button" onClick={onClose}>Close</button>
-          <button disabled className="modal-button" onClick={handleUpdate}>Update Selected</button>
-      <button className="modal-button" onClick={handleDelete}>Delete Selected</button>
+          
         </div>
       </div>
       {showCreateModal && <CreateCollectionModal onClose={() => setShowCreateModal(false)} onCollectionCreated={handleCollectionCreated} userEmail={userEmail} />}

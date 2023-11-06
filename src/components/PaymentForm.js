@@ -3,6 +3,7 @@ import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import './PaymentForm.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import FeatureList from './FeatureList';
 
 const PaymentForm = ({onPaymentSuccess}) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -11,16 +12,16 @@ const PaymentForm = ({onPaymentSuccess}) => {
   const elements = useElements();
   const navigate = useNavigate();
 
-  // const api = axios.create({
-  //   baseURL: 'http://127.0.0.1:5000', //replacw with Flask API URL 
-
-  // });
-
-  //PROD CODE
   const api = axios.create({
-    baseURL: 'https://nft-email-collector-api-806363e3ce7d.herokuapp.com/', //replacw with Flask API URL 
+    baseURL: 'http://127.0.0.1:5000', //replacw with Flask API URL 
 
   });
+
+  //PROD CODE
+  // const api = axios.create({
+  //   baseURL: 'https://nft-email-collector-api-806363e3ce7d.herokuapp.com/', //replacw with Flask API URL 
+
+  // });
 
 useEffect(() => {
   console.log(isLoading)
@@ -74,25 +75,31 @@ useEffect(() => {
   return (
     <div className="payment-form-container">
         {isLoading ? (
-            <div className="loading-spinner">Loading...</div>
+            <div className="loading-spinner"></div>
         ) : (
             <>
             <div className="product-details">
                 <div>
-                    <div className="title">Premium Subscription</div>
-                    <div className="description">Get unlimited access to all our features!</div>
+                    
+                    <FeatureList></FeatureList>
                 </div>
                 <div className="price">$19.99/month</div>
             </div>
-                <form onSubmit={handleSubmit}>
-                    <label>
-                        Enter Card details:
-                        <CardElement />
-                    </label>
-                    <button type="submit" disabled={!stripe}>
-                        Purchase
-                    </button>
-                </form>
+
+                <form onSubmit={handleSubmit} className="payment-form">
+    <div className="form-group">
+        <label htmlFor="card-element" className="form-label">
+            Enter Card Details
+        </label>
+        <div id="card-element" className="card-element">
+            <CardElement />
+        </div>
+    </div>
+    <button type="submit" disabled={!stripe} className="submit-button">
+        Purchase
+    </button>
+</form>
+
                 {paymentFeedback && <div className="feedback">{paymentFeedback}</div>}
             </>
         )}

@@ -3,6 +3,7 @@ import './LoginForm.css';
 import { loginUser } from '../services/api';
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from './Context';
+import Swal from 'sweetalert2';
 
 
 function LoginForm() {
@@ -35,10 +36,18 @@ const loginUserF = async (e) => {
 
         setUserEmail(userEmail);
       }
-      if(response.status === 200) {
+      if (response.status === 200) {
         login();
-        alert('You have successfully logged in, redirecting to Dashboard');
-        navigate('/dashboard');
+        Swal.fire({
+          title: 'Success!',
+          text: 'You have successfully logged in, redirecting to Dashboard',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+          if (result.value) {
+            navigate('/dashboard');
+          }
+        });
       }
     } catch (error) {
       console.error("Login Failed", error);

@@ -2,23 +2,30 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1A202C;
+    background-color: #007bff;
     color: white;
     padding: 16px;
     position: fixed;
     top: 0;
     z-index: 100;
     width: 100%;
+    
   }
   
   .toolbar-logo h1 {
     margin: 0;
     font-size: 24px;
+    font-weight: 500;
   }
   
   .toolbar-navigation a {
     margin-left: 20px;
     color: white;
     text-decoration: none;
+    font-weight: 500;
+  }
+
+  .toolbar-navigation a:hover{
+    color:#0056b3;
   }
   
