@@ -191,3 +191,6 @@ export const createPaymentIntent = async (amount) => {
         throw error;
     }
 }
+
+
+

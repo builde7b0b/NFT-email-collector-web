@@ -6,6 +6,7 @@ import ViewEmails from './ViewEmails';
 import {useAuth} from './Context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import DownloadEmailsButton from '../services/downloadEmails';
 
 function Dashboard(){
   const [showViewEmails, setShowViewEmails] = useState(false);
@@ -71,6 +72,11 @@ function Dashboard(){
             <button disabled onClick={goToViewEmails} className="dashboard-button "><FontAwesomeIcon icon={faStar} />Create Email Campaign</button>
             <button disabled onClick={goToViewEmails} className="dashboard-button"><FontAwesomeIcon icon={faStar} />Priority Support</button>
             <button disabled onClick={goToViewEmails} className="dashboard-button"><FontAwesomeIcon icon={faStar} />Manage NFTs</button>
+            <DownloadEmailsButton>
+            <FontAwesomeIcon icon={faStar} />
+            </DownloadEmailsButton>
+             
+            
           </div>
         </div>
 
