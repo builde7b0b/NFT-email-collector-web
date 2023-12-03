@@ -17,11 +17,27 @@ function Dashboard(){
     // Focus on the username input when the component mounts
     if(isLoggedIn){
       dashRef.current.focus();
-    }
+    } 
 
     console.log(isLoggedIn)
     
   }, []);
+
+  // useEffect(() => {
+  //   function handleClickOutside(event) {
+  //     if(showManageCollections && !dashRef.current.contains(event.target)){
+  //       setShowManageCollections(false);
+  //     }
+  //     if(showViewEmails && !dashRef.current.contains(event.target)){
+  //       setShowViewEmails(false);
+  //     }
+  //   }
+
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, [showManageCollections, showViewEmails]);
 
 
   const navigate = useNavigate();

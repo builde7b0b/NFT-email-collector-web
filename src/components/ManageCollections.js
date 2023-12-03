@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './ManageCollections.css';
 import { createCollection } from '../services/api';
 import { getAllCollections } from '../services/api';
@@ -32,13 +32,16 @@ const ActionsCellRenderer = (params) => {
 
 
 function ManageCollections( {onClose, userEmail}) {
+  const modalRef = useRef();
     const [name, setName] = useState(' ');
     const [description, setDescription] = useState(' ');
     const [collections, setCollections] = useState([]);
     const [showCreateModal, setShowCreateModal] = useState(false);
     const [gridApi, setGridApi] = useState(null);
     const [gridColumnApi, setGridColumnApi] = useState(null);
-    const [uerEmail, setUserEmail] = useState('')
+    
+
+    
 
     const columnDefs = [
       {headerCheckBoxSelection: true, checkboxSelection: true, width: 50},
