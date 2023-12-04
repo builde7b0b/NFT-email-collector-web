@@ -4,10 +4,14 @@ import './PaymentForm.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import FeatureList from './FeatureList';
+import { updateSubscriptionStatus } from '../services/api';
+
+
 
 const PaymentForm = ({onPaymentSuccess}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [paymentFeedback, setPaymentFeedback] = useState('');
+ 
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
@@ -31,6 +35,19 @@ useEffect(() => {
 
   return () => clearTimeout(timer);
 }, []);
+
+const handlePaymentSuccess = async () => {
+  try {
+    await updateSubscriptionStatus();
+    console.log('Premium status updated successfully');
+    setPaymentFeedback('Payment successful and premium status updated!');
+    
+    navigate('/dashboard');
+  } catch (error) {
+    console.error('Error updating premium status:', error);
+    setPaymentFeedback('Payment successful but failed to update premium status.');
+  }
+};
 
   const handleSubmit = async (event, onPaymentSuccess) => {
     event.preventDefault();
@@ -63,8 +80,7 @@ useEffect(() => {
         } else if (paymentIntent.status === 'succeeded') {
             console.log("Payment succeeded, redirecting...")
           // Payment succeeded, redirect to the Dashboard
-          setPaymentFeedback('Payment successful!');
-          navigate('/dashboard');
+          await handlePaymentSuccess();
         }
       } catch (error) {
         console.error('Error:', error);

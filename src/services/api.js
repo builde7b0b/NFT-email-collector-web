@@ -193,4 +193,46 @@ export const createPaymentIntent = async (amount) => {
 }
 
 
+export const getSubscriptionStatus = async () => {
+    try {
+        const token = localStorage.getItem('jwt');
+        if (!token) {
+            throw new Error('No token found');
+        }
+
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+
+        const response = await api.get('/check-subscription', config);
+        return response.data.isPremium; // Adjust according to the response struct
+    } catch (error) {
+        console.error('Error checking subscripton status:', error);
+        return false;
+    }
+}
+
+export const updateSubscriptionStatus = async () => {
+    try {
+        const token = localStorage.getItem('jwt');
+        if (!token) {
+            throw new Error('No token found');
+        }
+
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+
+        console.log(config);
+
+        const response = await api.post('/update-premium-status', {}, config);
+        console.log(response);
+        return response.data.isPremium; // Adjust according to the response struct
+    } catch (error) {
+        console.error('Error checking subscripton status:', error);
+        return false;
+    }
+}
+
+
 

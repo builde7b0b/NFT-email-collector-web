@@ -8,14 +8,14 @@ import { loadStripe } from '@stripe/stripe-js';
 import Modal from 'react-modal';
 import './fonts.css'
 
-// testing - LOCAL
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY_PROD);
-Modal.setAppElement('#root'); // Replace '#root' with the appropriate element where your React app is mounted.
+// testing - PROD
+// const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY_PROD);
+// Modal.setAppElement('#root'); // Replace '#root' with the appropriate element where your React app is mounted.
 
 
-// production code 
-// const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
-// Modal.setAppElement('#root');
+// testing code 
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
+Modal.setAppElement('#root');
 
 if (process.env.NODE_ENV === 'development') {
   console.log('Running in development mode');

@@ -7,22 +7,29 @@ import {useAuth} from './Context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import DownloadEmailsButton from '../services/downloadEmails';
+import { getSubscriptionStatus, updateSubscriptionStatus } from '../services/api';
+import UpdateSubscriptionButton from './UpdateSubscriptionButton';
 
 function Dashboard(){
   const [showViewEmails, setShowViewEmails] = useState(false);
   const [showManageCollections, setShowManageCollections] = useState(false);
   const dashRef = useRef(null); // Create a ref for the username input
   const { isLoggedIn } = useAuth();
+  const isPremium = getSubscriptionStatus();
 
-  useEffect(() => {
-    // Focus on the username input when the component mounts
-    if(isLoggedIn){
-      dashRef.current.focus();
-    } 
 
-    console.log(isLoggedIn)
-    
-  }, []);
+
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     dashRef.current.focus();
+  //     getSubscriptionStatus()
+  //       .then(isPremium => {
+  //         if (!isPremium) {
+  //           updateSubscriptionStatus();
+  //         }
+  //       });
+  //   }
+  // }, [isLoggedIn]);
 
   // useEffect(() => {
   //   function handleClickOutside(event) {
@@ -68,14 +75,14 @@ function Dashboard(){
           <div className="dashboard-actions">
             <button ref={dashRef} onClick={goToManageCollections} className="dashboard-button manage">Manage NFT Collections</button>
             <button onClick={goToViewEmails} className="dashboard-button emails ">View Email List</button>
-            <button disabled onClick={goToViewEmails} className="dashboard-button "><FontAwesomeIcon icon={faStar} />Export Email List</button>
+            {/* <button disabled onClick={goToViewEmails} className="dashboard-button "><FontAwesomeIcon icon={faStar} />Export Email List</button> */}
             <button disabled onClick={goToViewEmails} className="dashboard-button "><FontAwesomeIcon icon={faStar} />Create Email Campaign</button>
             <button disabled onClick={goToViewEmails} className="dashboard-button"><FontAwesomeIcon icon={faStar} />Priority Support</button>
             <button disabled onClick={goToViewEmails} className="dashboard-button"><FontAwesomeIcon icon={faStar} />Manage NFTs</button>
-            <DownloadEmailsButton>
+            <DownloadEmailsButton prop={isPremium}>
             <FontAwesomeIcon icon={faStar} />
             </DownloadEmailsButton>
-             
+            {/* <UpdateSubscriptionButton updateSubscriptionStatus={updateSubscriptionStatus} /> */}
             
           </div>
         </div>
