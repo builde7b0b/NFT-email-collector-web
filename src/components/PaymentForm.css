@@ -95,9 +95,10 @@ button:disabled {
 
 
 .payment-form {
-  max-width: 500px;
-  margin: 0 auto;
   background: #fff;
+  max-width: 90%; /* Adjust the percentage as needed */
+  max-height: 50%;
+  margin: 0 auto;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -142,4 +143,11 @@ button:disabled {
 .submit-button:disabled {
   background-color: #ccc;
   cursor: default;
+}
+
+@media (max-width: 600px) {
+  .payment-form {
+    max-width: 100%;
+    padding: 15px;
+  }
 }

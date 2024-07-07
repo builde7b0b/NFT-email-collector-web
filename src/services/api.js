@@ -1,13 +1,11 @@
 import axios from "axios";
 
-
+//TESTING
 const api = axios.create({
-    // baseURL: 'http://127.0.0.1:5000', //replacw with Flask API URL 
-    baseURL: 'https://nft-email-collector-api-806363e3ce7d.herokuapp.com/'
+    baseURL: 'http://127.0.0.1:5000', //replacw with Flask API URL 
 });
 
-
-
+//LIVE - PRODUCTION
 // const api = axios.create({
 //     baseURL: 'https://nft-email-collector-api-806363e3ce7d.herokuapp.com/', //replacw with Flask API URL 
 

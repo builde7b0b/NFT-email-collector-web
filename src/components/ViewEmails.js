@@ -96,7 +96,10 @@ function ViewEmails({onClose}) {
                     <h1>View Collected Emails</h1>
                     {emailList.map((collectionData, index) => (
                         <div key={index}>
-                            <h3>{collectionData.user_id}</h3>
+                            {/* <h3>{collectionData.user_id}</h3>
+                            Turn this into a Collection Name
+                            Associate Emails with NFT Collections */}
+
                             <div className="ag-theme-alpine" style={{ height: 100, width: 400 }}>
                                 <AgGridReact
                                     columnDefs={[

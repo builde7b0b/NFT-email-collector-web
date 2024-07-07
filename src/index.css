@@ -21,3 +21,11 @@ button, [type='button'], [type='reset'], [type='submit'] {
   background-color: green; /* or any other desired color */
 }
 
+/* Example if you have control over the modal's styling */
+.ReactModal__Content {
+  padding: 30px;
+  margin: 30px;
+  width: 90%;
+  max-height: 80%;
+}
+

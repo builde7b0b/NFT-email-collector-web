@@ -5,7 +5,10 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { getSubscriptionStatus, updateSubscriptionStatus } from './api';
 const api = axios.create({
     baseURL: 'http://127.0.0.1:5000', //replacw with Flask API URL 
+
+    //LIVE - PRODUCTION
     // baseURL: 'https://nft-email-collector-api-806363e3ce7d.herokuapp.com/'
+    //TODO: Get this from one place only. ENV
 });
 
 let isPremium2 = getSubscriptionStatus();

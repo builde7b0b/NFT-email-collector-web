@@ -1,14 +1,94 @@
+# LOCAL SETUP
 
+## Files:
 
+.**init**.py
+dashboard.py
+index.js
+api.js
+downloadEmails.js
 
+## Check Credentials:
 
+MONGO_URI
+Stripe Keys (Front-End / Backend)
+baseURL's
+REACT_APP_STRIPE_KEY_PROD
+REACT_APP_STRIPE_KEY
 
+## Start Application Locally:
 
+`$flask run` - Start Front-End
+`$npm run start` - Start Backend (Database starts automatically)
+`$mongosh` - Login to Database Shell
+`$show dbs` - Show Databases
+`$use [database name]` - Use a database/switch databases
 
+# TESTING
 
+## Local Accounts
 
+geno23@email.com
+password
 
+genotest@email.com
+password
 
+test@email.com
+password
+
+- testoct8@email.com
+- password
+
+geno@email.com
+password
+
+## Production
+
+# STRIPE INFO - TEST CARD
+
+4242 4242 4242 4242
+12/34
+111
+
+# MONGO DB - Using MongoSH
+
+## Use CLI Tool MongoSH
+
+`brew install mongosh`
+
+Tip:
+
+- In mongoDB, tables are referred to as collections.
+
+## Commands
+
+Show Databases:
+`show dbs `
+
+Use a database/Switch
+`use myDatabase`
+
+Show Collection(tables) within a database
+`show collections`
+
+View Documents in a collection
+`db.yourCollectionName.find()`
+
+View Documents with Pretty Formatting
+`db.yourCollectionName.find().pretty()`
+
+Count Documents
+`db.yourCollectionName.countDocuments()`
+
+Find Specific Documents
+`db.yourCollectionName.find({"key": "value"})`
+
+Limit and Skip:
+`db.yourCollectionName.find().limit(10).skip(20)`
+
+Sort Documents
+`db.yourCollectionName.find().sort({"key": 1}) #1 for asc
 
 # Getting Started with Create React App
 
@@ -80,4 +160,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
 # NFT-email-collector-web

@@ -100,7 +100,7 @@ const handlePaymentSuccess = async () => {
                     
                     <FeatureList></FeatureList>
                 </div>
-                <div className="price">$19.99/month</div>
+                <div className="price">$9.99</div>
             </div>
 
                 <form onSubmit={handleSubmit} className="payment-form">

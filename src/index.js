@@ -9,13 +9,13 @@ import Modal from 'react-modal';
 import './fonts.css'
 
 // LIVE - PROD
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY_PROD);
-Modal.setAppElement('#root'); // Replace '#root' with the appropriate element where your React app is mounted.
+// const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY_PROD);
+// Modal.setAppElement('#root'); // Replace '#root' with the appropriate element where your React app is mounted.
 
 
 // testing code 
-// const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
-// Modal.setAppElement('#root');
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
+Modal.setAppElement('#root');
 
 if (process.env.NODE_ENV === 'development') {
   console.log('Running in development mode');

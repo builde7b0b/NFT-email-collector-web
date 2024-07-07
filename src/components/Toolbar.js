@@ -1,9 +1,18 @@
 // Toolbar.js
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './Toolbar.css';
+import { useAuth } from './Context';
 
 const Toolbar = () => {
+  const { isLoggedIn, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  }
+
   return (
     <div className="toolbar">
       <div className="toolbar-logo">
@@ -13,8 +22,18 @@ const Toolbar = () => {
         </Link>
       </div>
       <div className="toolbar-navigation">
-      <Link to="/register"><button>Sign Up</button></Link>
-        <Link to="/login">Login</Link>
+        {!isLoggedIn ? (
+          <>
+          <Link to="/login">Login</Link>
+          <Link to="/register"><button>Sign Up</button></Link>
+          </>
+        ):(
+          <>
+          <button onClick={handleLogout}>Logout</button>
+          <Link to="/dashboard">Dashboard</Link>
+          </>
+          
+        )}
         {/* <Link to="/features">Features</Link> */}
         <Link  hidden to="/pricing">Pricing</Link>
         <Link hidden to="/dashboard">Dashboard</Link>
